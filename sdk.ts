@@ -1,5 +1,5 @@
-import {RootState} from './store/helpers';
-import {store as redux} from './index';
+import { RootState } from './store/helpers';
+import { store as redux } from './index';
 
 import {
   addMovieToFavourites,
@@ -40,7 +40,15 @@ class MySDK {
       loadMoreMovies,
       clearMovieDetails,
       setFilterValue,
-    };
+    }
+  }
+
+  getSelectors() {
+    return {
+      moviesSelector,
+      movieDetailsSelector,
+      favouritesSelector
+    }
   }
 }
 
