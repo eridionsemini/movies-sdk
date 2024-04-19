@@ -1,10 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
 import api from '../../api';
-import { MoviesSDK } from '../..';
-
-const { getKey } = new MoviesSDK();
-
-const apiKey = getKey();
 
 import { createAppAsyncThunk, ThunkConfig } from '../helpers';
 import {
@@ -29,7 +24,7 @@ const moviesAsyncThunk = (thunkName: MoviesThunkName, requestConfig: MoviesReque
   );
 };
 
-const movieRequestConfig: MoviesRequestConfig = (s, page) => `?apiKey=${apiKey}&page=${page}&s=${s}`;
+const movieRequestConfig: MoviesRequestConfig = (s, page) => `?apiKey=400fbde2&page=${page}&s=${s}`;
 
 export const getMoviesList = moviesAsyncThunk('getMoviesList', movieRequestConfig);
 

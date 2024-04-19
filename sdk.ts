@@ -25,7 +25,6 @@ export class MoviesSDK {
 
   constructor() {
     this.store = redux;
-    this.apiKey = this.apiKey;
   }
 
   getStore(): Store {
@@ -54,8 +53,5 @@ export class MoviesSDK {
       movieDetailsSelector,
       favouritesSelector,
     };
-  }
-  getKey() {
-    return this.apiKey;
   }
 }
