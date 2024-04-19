@@ -13,7 +13,7 @@ import {
   setFilterValue,
 } from './index';
 
-class MySDK {
+export class MySDK {
   private store: RootState;
 
   getStore(): RootState {
@@ -36,4 +36,3 @@ class MySDK {
   }
 }
 
-export default MySDK;

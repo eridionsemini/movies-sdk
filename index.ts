@@ -8,3 +8,4 @@ export * from './store/favourites/types';
 export * from './store/movies';
 export * from './store/movies/types';
 export * from './store/helpers';
+export * from './sdk';
