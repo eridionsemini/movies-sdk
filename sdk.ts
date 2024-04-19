@@ -18,10 +18,10 @@ import {
 } from './index';
 
 export class MySDK {
-  private store: RootState;
+  private store;
 
   constructor() {
-    this.store = redux.getState();
+    this.store = redux;
   }
 
   getStore(): RootState {
@@ -50,4 +50,5 @@ export class MySDK {
       favouritesSelector
     }
   }
+
 }
