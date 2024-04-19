@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {Movie} from 'general-types';
+import {Movie} from '../../general-types';
 
 import {RootState} from '../helpers';
 import {addMovieToFavourites, removeMovieFromFavourites} from './actions';

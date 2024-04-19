@@ -1,4 +1,4 @@
-import {MovieDetails} from 'general-types';
+import {MovieDetails} from '../../general-types';
 
 export interface MovieReducer {
   details: MovieDetails | null;

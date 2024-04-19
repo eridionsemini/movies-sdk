@@ -1,7 +1,12 @@
-import {createAction} from '@reduxjs/toolkit';
+import { createAction } from '@reduxjs/toolkit';
 import api from '../../api';
+import { MoviesSDK } from '../..';
 
-import {createAppAsyncThunk, ThunkConfig} from '../helpers';
+const { getKey } = new MoviesSDK();
+
+const apiKey = getKey();
+
+import { createAppAsyncThunk, ThunkConfig } from '../helpers';
 import {
   FilterKeys,
   MoviesSearchQueryParams,
@@ -13,7 +18,7 @@ import {
 const moviesAsyncThunk = (thunkName: MoviesThunkName, requestConfig: MoviesRequestConfig) => {
   return createAppAsyncThunk<MoviesSearchResponse, MoviesSearchQueryParams, ThunkConfig>(
     thunkName,
-    async ({s, page}, thunkAPI) => {
+    async ({ s, page }, thunkAPI) => {
       const req = requestConfig(s, page);
       try {
         return await api.get<MoviesSearchQueryParams, MoviesSearchResponse>(req);
@@ -24,7 +29,7 @@ const moviesAsyncThunk = (thunkName: MoviesThunkName, requestConfig: MoviesReque
   );
 };
 
-const movieRequestConfig: MoviesRequestConfig = (s, page) => `?apiKey=400fbde2&page=${page}&s=${s}`;
+const movieRequestConfig: MoviesRequestConfig = (s, page) => `?apiKey=${apiKey}&page=${page}&s=${s}`;
 
 export const getMoviesList = moviesAsyncThunk('getMoviesList', movieRequestConfig);
 
@@ -34,4 +39,4 @@ export const refreshMoviesList = moviesAsyncThunk('refreshMoviesList', movieRequ
 
 export const resetMoviesListPage = createAction<void>('resetMoviesListPage');
 export const incrementMoviesListPage = createAction<void>('incrementMoviesListPage');
-export const setFilterValue = createAction<{key: FilterKeys; value: string}>('setFilterValue');
+export const setFilterValue = createAction<{ key: FilterKeys; value: string }>('setFilterValue');

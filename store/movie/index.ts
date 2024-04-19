@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {MovieDetails} from 'general-types';
+import {MovieDetails} from '../../general-types';
 
 import {RootState} from '../helpers';
 import {clearMovieDetails, getMovieDetails, refreshMovieDetails} from './actions';
