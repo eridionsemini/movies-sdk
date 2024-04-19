@@ -1,5 +1,5 @@
-import { RootState } from './store/helpers';
 import { store as redux } from './index';
+import {Store} from "@reduxjs/toolkit";
 
 import {
   addMovieToFavourites,
@@ -18,13 +18,13 @@ import {
 } from './index';
 
 export class MySDK {
-  private store;
+  private readonly store:Store;
 
   constructor() {
     this.store = redux;
   }
 
-  getStore(): RootState {
+  getStore(): Store {
     return this.store;
   }
 
