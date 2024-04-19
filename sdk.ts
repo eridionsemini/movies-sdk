@@ -1,4 +1,5 @@
 import {RootState} from './store/helpers';
+import {store as redux} from './index';
 
 import {
   addMovieToFavourites,
@@ -11,10 +12,17 @@ import {
   loadMoreMovies,
   clearMovieDetails,
   setFilterValue,
+  moviesSelector,
+  movieDetailsSelector,
+  favouritesSelector
 } from './index';
 
-export class MySDK {
+class MySDK {
   private store: RootState;
+
+  constructor() {
+    this.store = redux.getState();
+  }
 
   getStore(): RootState {
     return this.store;
@@ -36,3 +44,4 @@ export class MySDK {
   }
 }
 
+export default MySDK;
