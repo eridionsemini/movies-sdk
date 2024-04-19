@@ -17,7 +17,7 @@ import {
   favouritesSelector
 } from './index';
 
-class MySDK {
+export class MySDK {
   private store: RootState;
 
   constructor() {
@@ -51,5 +51,3 @@ class MySDK {
     }
   }
 }
-
-export default MySDK;
