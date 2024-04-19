@@ -14,7 +14,8 @@ import {
   setFilterValue,
   moviesSelector,
   movieDetailsSelector,
-  favouritesSelector
+  favouritesSelector,
+    getMovieDetails
 } from './index';
 
 export class MySDK {
@@ -40,6 +41,7 @@ export class MySDK {
       loadMoreMovies,
       clearMovieDetails,
       setFilterValue,
+      getMovieDetails
     }
   }
 
@@ -50,5 +52,4 @@ export class MySDK {
       favouritesSelector
     }
   }
-
 }
