@@ -1,6 +1,5 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {setupListeners} from '@reduxjs/toolkit/query';
-import logger from 'redux-logger';
 
 import {favouriteMoviesReducer} from './favourites';
 import {movieReducer} from './movie';
@@ -14,7 +13,7 @@ export const rootReducer = combineReducers({
 
 export const store = configureStore({
   reducer: rootReducer,
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat([logger]),
+  middleware: getDefaultMiddleware => getDefaultMiddleware()
 });
 
 setupListeners(store.dispatch);
