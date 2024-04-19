@@ -1,5 +1,5 @@
-import { store as redux } from './index';
-import {Store} from "@reduxjs/toolkit";
+import {store as redux} from './index';
+import {Store} from '@reduxjs/toolkit';
 
 import {
   addMovieToFavourites,
@@ -15,11 +15,11 @@ import {
   moviesSelector,
   movieDetailsSelector,
   favouritesSelector,
-    getMovieDetails
+  getMovieDetails,
 } from './index';
 
-export class MySDK {
-  private readonly store:Store;
+export class MoviesSDK {
+  private readonly store: Store;
 
   constructor() {
     this.store = redux;
@@ -41,15 +41,15 @@ export class MySDK {
       loadMoreMovies,
       clearMovieDetails,
       setFilterValue,
-      getMovieDetails
-    }
+      getMovieDetails,
+    };
   }
 
   getSelectors() {
     return {
       moviesSelector,
       movieDetailsSelector,
-      favouritesSelector
-    }
+      favouritesSelector,
+    };
   }
 }
