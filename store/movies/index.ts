@@ -1,6 +1,6 @@
-import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import {RootState} from '../helpers';
+import { RootState } from '../helpers';
 import {
   getMoviesList,
   incrementMoviesListPage,
@@ -9,7 +9,7 @@ import {
   resetMoviesListPage,
   setFilterValue,
 } from './actions';
-import {FilterKeys, MoviesReducer, MoviesSearchResponse} from './types';
+import { FilterKeys, MoviesReducer, MoviesSearchResponse } from './types';
 
 const initialState: MoviesReducer = {
   data: [],
@@ -38,6 +38,7 @@ const moviesSlice = createSlice({
       .addCase(getMoviesList.fulfilled, (state, action: PayloadAction<MoviesSearchResponse>) => {
         state.loading = false;
         state.data = action.payload.Search;
+        state.totalResults = action.payload.totalResults;
         state.hasMore = Number(action.payload.totalResults) > 10;
       })
       .addCase(refreshMoviesList.pending, state => {
@@ -51,6 +52,7 @@ const moviesSlice = createSlice({
         (state, action: PayloadAction<MoviesSearchResponse>) => {
           state.refreshing = false;
           state.data = action.payload.Search;
+          state.totalResults = action.payload.totalResults;
           state.hasMore = Number(action.payload.totalResults) > 10;
         },
       )
@@ -63,6 +65,7 @@ const moviesSlice = createSlice({
       .addCase(loadMoreMovies.fulfilled, (state, action: PayloadAction<MoviesSearchResponse>) => {
         state.loading = false;
         state.data = state.data.concat(action.payload.Search);
+        state.totalResults = action.payload.totalResults;
         state.hasMore = Number(action.payload.totalResults) > 10;
       })
       .addCase(incrementMoviesListPage.type, state => {
@@ -73,7 +76,7 @@ const moviesSlice = createSlice({
       })
       .addCase(
         setFilterValue.type,
-        (state, action: PayloadAction<{key: FilterKeys; value: string}>) => {
+        (state, action: PayloadAction<{ key: FilterKeys; value: string }>) => {
           const key = action.payload.key;
           if (Object.keys(state.filter).includes(key as string)) {
             state.filter[key] = action.payload.value;
@@ -92,6 +95,6 @@ export {
   setFilterValue,
 };
 
-export const {reducer: moviesReducer} = moviesSlice;
+export const { reducer: moviesReducer } = moviesSlice;
 
 export const moviesSelector = (state: RootState): MoviesReducer => state.movies;
