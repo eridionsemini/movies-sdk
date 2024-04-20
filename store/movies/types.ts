@@ -1,8 +1,9 @@
-import {Movie} from '../../general-types';
+import { Movie } from '../../general-types';
 
 export interface MoviesSearchQueryParams {
   s: string;
   page: number;
+  apiKey: string;
 }
 
 export interface MoviesSearchResponse {
@@ -13,7 +14,7 @@ export interface MoviesSearchResponse {
 
 export type MoviesThunkName = 'getMoviesList' | 'loadMoreMovies' | 'refreshMoviesList';
 
-export type MoviesRequestConfig = (s: string, page: number) => string;
+export type MoviesRequestConfig = (s: string, page: number, apiKey: string) => string;
 
 export interface Filter {
   [key: string]: string;

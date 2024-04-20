@@ -13,8 +13,8 @@ import {
 const moviesAsyncThunk = (thunkName: MoviesThunkName, requestConfig: MoviesRequestConfig) => {
   return createAppAsyncThunk<MoviesSearchResponse, MoviesSearchQueryParams, ThunkConfig>(
     thunkName,
-    async ({ s, page }, thunkAPI) => {
-      const req = requestConfig(s, page);
+    async ({ s, page, apiKey }, thunkAPI) => {
+      const req = requestConfig(s, page, apiKey);
       try {
         return await api.get<MoviesSearchQueryParams, MoviesSearchResponse>(req);
       } catch (e) {
@@ -24,7 +24,7 @@ const moviesAsyncThunk = (thunkName: MoviesThunkName, requestConfig: MoviesReque
   );
 };
 
-const movieRequestConfig: MoviesRequestConfig = (s, page) => `?apiKey=400fbde2&page=${page}&s=${s}`;
+const movieRequestConfig: MoviesRequestConfig = (s, page, apiKey) => `?apiKey=${apiKey}&page=${page}&s=${s}`;
 
 export const getMoviesList = moviesAsyncThunk('getMoviesList', movieRequestConfig);
 
