@@ -9,8 +9,8 @@ import {MovieDetailsParams, RequestConfig, ThunkName} from './types';
 const movieAsyncThunk = (thunkName: ThunkName, requestConfig: RequestConfig) => {
   return createAppAsyncThunk<MovieDetails, MovieDetailsParams, ThunkConfig>(
     thunkName,
-    async ({i}, thunkAPI) => {
-      const req = requestConfig(i);
+    async ({i, apiKey}, thunkAPI) => {
+      const req = requestConfig(i, apiKey);
       try {
         return await api.get<MovieDetailsParams, MovieDetails>(req);
       } catch (e) {
@@ -20,7 +20,7 @@ const movieAsyncThunk = (thunkName: ThunkName, requestConfig: RequestConfig) => 
   );
 };
 
-const movieRequestConfig: RequestConfig = i => `?apiKey=400fbde2&i=${i}`;
+const movieRequestConfig: RequestConfig = (i, apiKey) => `?apiKey=${apiKey}&i=${i}`;
 
 export const getMovieDetails = movieAsyncThunk('getMovieDetails', movieRequestConfig);
 

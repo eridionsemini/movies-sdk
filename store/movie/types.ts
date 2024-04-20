@@ -7,8 +7,9 @@ export interface MovieReducer {
 }
 export type ThunkName = 'getMovieDetails' | 'refreshMovieDetails';
 
-export type RequestConfig = (i: string) => string;
+export type RequestConfig = (i: string, apiKey: string) => string;
 
 export interface MovieDetailsParams {
   i: string;
+  apiKey: string;
 }

@@ -1,5 +1,5 @@
-import { store as redux } from './index';
-import { Store } from '@reduxjs/toolkit';
+import {store as redux} from './index';
+import {Store} from '@reduxjs/toolkit';
 
 import {
   addMovieToFavourites,
@@ -21,7 +21,6 @@ import {
 export class MoviesSDK {
   private readonly store: Store;
   private readonly apiKey: string;
-
 
   constructor() {
     this.store = redux;
